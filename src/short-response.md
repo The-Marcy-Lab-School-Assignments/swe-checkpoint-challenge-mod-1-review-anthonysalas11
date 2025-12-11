@@ -1,6 +1,7 @@
 # Short Responses
 
 For this assessment, aim to write a response with the following qualities:
+
 - [ ] Addresses all parts of the prompt
 - [ ] Accurately uses relevant technical terminology
 - [ ] Is free of grammar and spelling mistakes
@@ -26,7 +27,7 @@ const getLetterGrade = (score) => {
   }
 
   return "Your grade is: " + letter;
-}
+};
 
 console.log(getLetterGrade(95)); // This should print "Your grade is: A"
 console.log(getLetterGrade(82)); // This should print "Your grade is: B"
@@ -42,11 +43,11 @@ console.log(getLetterGrade(65)); // This should print "Your grade is: F"
 
 **Part A:**
 
-Your response...
+The reason this bug is occurring is because in our return statement `letter` is being read as
 
 **Part B:**
 
-Your response...
+I would fix this by wrapping `letter` in backticks and a temperate literal.
 
 ---
 
@@ -69,18 +70,18 @@ console.log(originalSettings.volume);
 
 **Part A:**
 
-Your response...
+When we print `originalSetting.volume` we will get `75` not `50`.This happens because `newSettings` is set equal to `originalSettings`.Therefore they are both referencing the same object stored in heap memory.If anything updates in one of them they both update.
 
 **Part B:**
 
-Your response...
+In order to fix the the code so that `newSetting` and `originalSetting` are not affected by each other, we need to use the spread operator.We would put `originalSettings` inside of a spread operator instead of just setting them equal to each other.This will make a shallow copy that is stored in the newSetting variable.
 
 **Corrected Code:**
 
 ```js
 // Fix this code so newSettings is a true copy
 const originalSettings = { volume: 50, brightness: 80 };
-const newSettings = originalSettings;
+const newSettings = { ...originalSettings };
 newSettings.volume = 75;
 console.log(originalSettings.volume);
 ```
@@ -90,6 +91,7 @@ console.log(originalSettings.volume);
 ## Prompt 3
 
 Given this array of products and the code using `filter`:
+
 ```js
 const products = [
   { name: "Laptop", price: 1000, inStock: true },
@@ -99,15 +101,16 @@ const products = [
 ];
 
 const itemsInStock = products.filter((product) => {
-  return product.inStock
+  return product.inStock;
 });
 ```
 
 Walk through what happens in the first iteration of filter:
+
 - What is the value of `product`?
 - What gets returned from the callback?
 - What happens with that returned value?
 
 ### Response 3
 
-Your response...
+In the first iteration of `filter` the `product` is the first element in the array `products` which is an object.That object gets put into the heap memory.The callback will return the boolean true or false based on the inStock key which in this case is true.After that returned value is finished executing it gets popped off.
